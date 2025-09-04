@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layered Statements: A Tutorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="max-w-4xl mx-auto p-4 sm:p-8">
+
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-slate-900 mb-2">The Art of Layered Statements</h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto">An interactive tutorial inspired by the idea that true agreement is more than just words.</p>
+        </header>
+
+        <!-- Explanation Card -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-bold mb-4">From Consent to Connection</h2>
+            <p class="text-slate-600 mb-4">You articulated a powerful progression: <span class="font-semibold">"Consent: Proof of Resonance: Proof of Being on the Same Page."</span> This reveals that a simple statement is often just the tip of the iceberg. Below the surface lies the feeling of connection and the clarity of shared understanding.</p>
+            <p class="text-slate-600">This tool helps you practice identifying these three layers in any statement to foster deeper, more authentic communication and avoid the pitfalls of superficial agreements.</p>
+        </div>
+
+        <!-- Interactive Tutorial Card -->
+        <div id="tutorial-card" class="card fade-in">
+            <div class="text-center mb-6">
+                <h2 id="scenario-title" class="text-2xl font-bold text-indigo-700"></h2>
+                <p id="scenario-description" class="text-slate-600 mt-2"></p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Layer 1: Surface -->
+                <div>
+                    <label for="surface-input" class="block text-sm font-medium text-slate-700 mb-1">Layer 1: The Surface Statement</label>
+                    <h3 class="text-xl font-semibold text-slate-800">The "What"</h3>
+                    <p class="text-sm text-slate-500 mb-2">What is the simple, observable word or action?</p>
+                    <textarea id="surface-input" rows="2" class="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"></textarea>
+                </div>
+
+                <!-- Layer 2: Resonance -->
+                <div>
+                    <label for="resonance-input" class="block text-sm font-medium text-slate-700 mb-1">Layer 2: The Resonance</label>
+                    <h3 class="text-xl font-semibold text-slate-800">The "Feeling"</h3>
+                    <p class="text-sm text-slate-500 mb-2">What is the underlying energetic or emotional state? Is there a shared vibration?</p>
+                    <textarea id="resonance-input" rows="3" class="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"></textarea>
+                </div>
+
+                <!-- Layer 3: Understanding -->
+                <div>
+                    <label for="understanding-input" class="block text-sm font-medium text-slate-700 mb-1">Layer 3: The Shared Understanding</label>
+                    <h3 class="text-xl font-semibold text-slate-800">The "Why"</h3>
+                    <p class="text-sm text-slate-500 mb-2">What is the shared context, goal, or intention? Are we truly on the same page?</p>
+                    <textarea id="understanding-input" rows="3" class="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"></textarea>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="flex justify-between items-center mt-8">
+                <button id="prev-btn" class="px-4 py-2 bg-slate-200 text-slate-700 rounded-md hover:bg-slate-300 transition disabled:opacity-50 disabled:cursor-not-allowed">Previous</button>
+                <span id="scenario-counter" class="text-sm text-slate-500"></span>
+                <button id="next-btn" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition disabled:opacity-50 disabled:cursor-not-allowed">Next Scenario</button>
+            </div>
+        </div>
+
+        <!-- Alignment Check Card -->
+        <div class="card mt-8">
+            <h2 class="text-2xl font-bold mb-4">The Alignment Check</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-semibold text-green-600">When Layers Align:</h3>
+                    <p class="text-slate-600">The statement, feeling, and understanding are in harmony. This leads to trust, clarity, and genuine connection. Action flows effortlessly.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-red-600">When Layers Misalign:</h3>
+                    <p class="text-slate-600">Saying "yes" (Surface) without feeling it (Resonance) or understanding the stakes (Understanding) leads to resentment, confusion, and broken trust. These misalignments are invitations to communicate more deeply.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const scenarios = [
+                {
+                    title: "Scenario 1: Giving Consent",
+                    description: "This is the foundational example. Explore the layers behind a simple 'Yes'.",
+                    placeholders: {
+                        surface: "e.g., 'Yes, I agree.'",
+                        resonance: "e.g., A feeling of safety, enthusiasm, and mutual respect. My body and heart feel open.",
+                        understanding: "e.g., 'We both clearly understand what we are agreeing to, the boundaries involved, and the shared intention.'"
+                    }
+                },
+                {
+                    title: "Scenario 2: Making an Apology",
+                    description: "An apology can be empty or transformative. The difference is in the layers.",
+                    placeholders: {
+                        surface: "e.g., 'I'm sorry.'",
+                        resonance: "e.g., A genuine feeling of remorse, empathy for the other person's pain, and a desire to reconnect.",
+                        understanding: "e.g., 'We both understand exactly what I am apologizing for and acknowledge the impact of my actions.'"
+                    }
+                },
+                {
+                    title: "Scenario 3: Offering Help",
+                    description: "Saying 'Let me know if you need anything' can be a platitude or a real offer.",
+                    placeholders: {
+                        surface: "e.g., 'I'm here for you.'",
+                        resonance: "e.g., A sincere feeling of care and a genuine willingness to give my time and energy.",
+                        understanding: "e.g., 'The other person understands I mean it, and I have a realistic idea of what I'm capable of offering.'"
+                    }
+                },
+                {
+                    title: "Scenario 4: Collaborating on a Project",
+                    description: "Agreeing to work together requires more than just a verbal commitment.",
+                    placeholders: {
+                        surface: "e.g., 'Let's do it. I'm on board.'",
+                        resonance: "e.g., A shared excitement and creative energy. A feeling of being on the same team.",
+                        understanding: "e.g., 'We have a shared vision for the outcome, a clear understanding of roles, and mutual respect for each other's contributions.'"
+                    }
+                },
+                 {
+                    title: "Scenario 5: Expressing Love",
+                    description: "The phrase 'I love you' can carry infinite depth or feel hollow, depending on the layers.",
+                    placeholders: {
+                        surface: "e.g., 'I love you.'",
+                        resonance: "e.g., A profound feeling of affection, acceptance, and deep connection that is felt physically and emotionally.",
+                        understanding: "e.g., 'We both share an understanding of what love means in our relationship—its responsibilities, freedoms, and commitments.'"
+                    }
+                }
+            ];
+
+            let currentScenarioIndex = 0;
+
+            const scenarioTitleEl = document.getElementById('scenario-title');
+            const scenarioDescriptionEl = document.getElementById('scenario-description');
+            const surfaceInput = document.getElementById('surface-input');
+            const resonanceInput = document.getElementById('resonance-input');
+            const understandingInput = document.getElementById('understanding-input');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const scenarioCounterEl = document.getElementById('scenario-counter');
+            const tutorialCard = document.getElementById('tutorial-card');
+
+            function loadScenario(index) {
+                const scenario = scenarios[index];
+                
+                // Add fade-in effect
+                tutorialCard.classList.remove('fade-in');
+                void tutorialCard.offsetWidth; // Trigger reflow
+                tutorialCard.classList.add('fade-in');
+                
+                scenarioTitleEl.textContent = scenario.title;
+                scenarioDescriptionEl.textContent = scenario.description;
+                
+                surfaceInput.placeholder = scenario.placeholders.surface;
+                resonanceInput.placeholder = scenario.placeholders.resonance;
+                understandingInput.placeholder = scenario.placeholders.understanding;
+
+                // Clear previous user input
+                surfaceInput.value = '';
+                resonanceInput.value = '';
+                understandingInput.value = '';
+                
+                updateNavigation();
+            }
+
+            function updateNavigation() {
+                prevBtn.disabled = currentScenarioIndex === 0;
+                nextBtn.disabled = currentScenarioIndex === scenarios.length - 1;
+                scenarioCounterEl.textContent = `Scenario ${currentScenarioIndex + 1} of ${scenarios.length}`;
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (currentScenarioIndex < scenarios.length - 1) {
+                    currentScenarioIndex++;
+                    loadScenario(currentScenarioIndex);
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentScenarioIndex > 0) {
+                    currentScenarioIndex--;
+                    loadScenario(currentScenarioIndex);
+                }
+            });
+
+            // Initial load
+            loadScenario(currentScenarioIndex);
+        });
+    </script>
+</body>
+</html>
+
